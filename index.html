@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StreamSales Bolivia - TikTok Live Shopping</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>StreamSales Bolivia</h1>
+    <span class="live">EN VIVO</span>
+    <span class="cart">Carrito: <b id="cartCount">0</b></span>
+  </header>
+
+  <main>
+    <!-- Día 1: delegación de eventos sobre este contenedor -->
+    <section id="liveContainer" class="panel stage">
+      <h2>Descuentos relámpago de tecnología</h2>
+      <p class="hint">Toca Comprar para elegir una oferta. Doble clic en cualquier parte para enviar corazones.</p>
+      <div id="offers" class="offers">
+        <article class="offer" data-price="50" data-stock="6">
+          <div class="info"><h3>Auriculares Gamer 50% OFF</h3><small>50 BOB · quedan <span class="stock">6</span></small></div>
+          <button class="btn" data-prod="Auriculares Gamer 50% OFF">Comprar</button>
+        </article>
+        <article class="offer" data-price="120" data-stock="4">
+          <div class="info"><h3>Smartwatch Deportivo 35% OFF</h3><small>120 BOB · quedan <span class="stock">4</span></small></div>
+          <button class="btn" data-prod="Smartwatch Deportivo 35% OFF">Comprar</button>
+        </article>
+        <article class="offer" data-price="70" data-stock="8">
+          <div class="info"><h3>Cargador Portátil 20000 mAh</h3><small>70 BOB · quedan <span class="stock">8</span></small></div>
+          <button class="btn" data-prod="Cargador Portátil 20000 mAh">Comprar</button>
+        </article>
+      </div>
+      <div class="row">
+        <button class="btn" data-action="like">Like <span id="likeCount">0</span></button>
+        <button class="btn alt" data-action="new-offer">+ Nueva oferta relámpago</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Chat del Live</h2>
+      <ul id="chatList" class="chat-list"></ul>
+      <input type="text" id="chatInput" placeholder="Pregunta al vendedor y presiona Enter" aria-label="Mensaje del chat">
+    </section>
+
+    <!-- Día 2: change y submit -->
+    <section class="panel">
+      <h2>Compra rápida</h2>
+      <form id="orderForm">
+        <p class="hint">Producto: <b id="selectedProduct">ninguno, elige uno arriba</b></p>
+        <label for="variantSelect">Variante</label>
+        <select id="variantSelect">
+          <option value="Kit Básico (1 und)" data-units="1" data-mult="1">Kit Básico (1 und)</option>
+          <option value="Combo Doble (2 und)" data-units="2" data-mult="1.6">Combo Doble (2 und)</option>
+        </select>
+        <label for="userTikTok">Usuario de TikTok</label>
+        <input type="text" id="userTikTok" placeholder="@usuario_live" pattern="@[A-Za-z0-9_.]{2,24}" title="Empieza con @ y usa letras, números, _ o ." required>
+        <p class="total">Total: <span id="total">-</span></p>
+        <button type="submit" class="btn buy-now">Confirmar compra en directo</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Bitácora en tiempo real</h2>
+      <ul id="logOutput" class="log"><li><b data-t="SISTEMA">SISTEMA</b>: esperando interacciones del Live...</li></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

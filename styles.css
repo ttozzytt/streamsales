@@ -1,0 +1,54 @@
+:root {
+  --bg: #0c0c14; --panel: #16161f; --card: #1d1d29; --line: #2a2a38;
+  --pink: #fe2c55; --cyan: #25f4ee; --text: #f4f4f6; --muted: #9a9aae;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.45 system-ui, "Segoe UI", Roboto, sans-serif; }
+
+.top { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.top h1 { flex: 1; margin: 0; font-size: 1.15rem; }
+.live { background: var(--pink); font-size: .75rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.cart { color: var(--cyan); font-size: .9rem; }
+
+main { display: grid; gap: 14px; max-width: 1000px; margin: 0 auto; padding: 16px; }
+@media (min-width: 860px) { main { grid-template-columns: 1.1fr 1fr; align-items: start; } }
+
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+h2 { margin: 0 0 8px; font-size: 1rem; }
+.hint { margin: 0 0 12px; color: var(--muted); font-size: .85rem; }
+
+.stage { position: relative; overflow: hidden; user-select: none; }
+.offers { display: grid; gap: 10px; }
+.offer { display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+.offer.selected { border-color: var(--cyan); }
+.offer .info { flex: 1; }
+.offer h3 { margin: 0; font-size: .95rem; }
+.offer small { color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+.btn { border: 0; border-radius: 999px; padding: 8px 14px; background: var(--pink); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+.btn.alt { background: var(--line); }
+.btn:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.heart { position: absolute; font-size: 2rem; pointer-events: none; animation: subir 1s ease-out forwards; }
+@keyframes subir { to { transform: translateY(-110px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .heart { animation-duration: .01s; } }
+
+.chat-list { margin: 0 0 10px; padding: 0; list-style: none; max-height: 110px; overflow-y: auto; font-size: .9rem; }
+.chat-list b { color: var(--cyan); }
+
+label { display: block; margin: 10px 0 4px; color: var(--muted); font-size: .85rem; }
+input, select { width: 100%; padding: 10px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 6px; font: inherit; }
+.total { margin: 12px 0; font-weight: 700; }
+.buy-now { width: 100%; padding: 12px; border-radius: 6px; background: var(--cyan); color: #06222a; }
+
+.log { margin: 0; padding: 0; list-style: none; max-height: 280px; overflow-y: auto; font: .8rem/1.5 ui-monospace, Menlo, Consolas, monospace; }
+.log li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+.log time { color: var(--muted); }
+.log b[data-t="OFERTA_CLICK"] { color: var(--cyan); }
+.log b[data-t="LIKE_STREAM"] { color: var(--pink); }
+.log b[data-t^="CHAT"] { color: #c4b5fd; }
+.log b[data-t="CAMBIO_VARIANTE"] { color: #fbbf24; }
+.log b[data-t="COMPRA_EXITOSA"] { color: #4ade80; }
+.log b[data-t="ERROR_PEDIDO"], .log b[data-t="STOCK_AGOTADO"] { color: #f87171; }
+.log b[data-t="NUEVA_OFERTA"] { color: #fb923c; }
